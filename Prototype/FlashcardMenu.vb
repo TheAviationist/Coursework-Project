@@ -89,58 +89,49 @@ Public Class FlashcardMenu
     End Sub
 
     Private Sub SetListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SetListbox.SelectedIndexChanged
-        'upon selectrion of an item in the listbox
-        'ghgfhfghgfhfghfghgfhfghghfhggfhfgh
-        'Load all the flashcards for that selected option into array
-        'If there are no cards to load, show a popup to add a new card
+
+        'Grabs the name of the currently selected set
         GVariables.CurrentSetName = SetListbox.GetItemText(SetListbox.SelectedItem)
-        'this try-catch loop sets "currentsetid" variable as the value of the current set ID matching the name of the set 
         Try
+            'Open a connection
             GLOBALS.openConnection()
-            GLOBALS.ConnToDb()
-            GLOBALS.myqry = "SELECT SetID FROM Flashcard_Set WHERE SetName = " & GVariables.CurrentSetName
-            GLOBALS.mycmd = New OleDbCommand(GLOBALS.myqry, GLOBALS.conn)
-            GLOBALS.mydr = GLOBALS.mycmd.ExecuteReader
+            'Setup a query for grabbing the ID of the set equal to the selected set name
+            GLOBALS.mycmd.CommandText = "SELECT SetID FROM Flashcard_Set WHERE SetName = ?"
+            GLOBALS.mycmd.Parameters.Add("SetName", OleDbType.VarChar, 64)
+            GLOBALS.mycmd.Parameters(0).Value = GVariables.CurrentSetName
+            GLOBALS.mycmd.Prepare()
+            GLOBALS.mydr = GLOBALS.mycmd.ExecuteReader()
+            'Grab the ID if it exists
             While GLOBALS.mydr.Read()
+                'Set current set ID
                 GVariables.CurrentSetID = Convert.ToInt32(GLOBALS.mydr("SetID"))
             End While
-
         Catch ex As Exception
             MessageBox.Show(ex.Message(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
-        'now populate the first flashcard
-        If FrontBack.Text = "back" Then
-            Try
-                GLOBALS.openConnection()
-                Dim flashcardcontents As String = "back flashcard contents"
-                GLOBALS.ConnToDb()
-                GLOBALS.myqry = "SELECT back FROM flashcard WHERE setID = " & GVariables.CurrentSetID
-                GLOBALS.mycmd = New OleDbCommand(GLOBALS.myqry, GLOBALS.conn)
-                GLOBALS.mydr = GLOBALS.mycmd.ExecuteReader
-                While GLOBALS.mydr.Read()
-                    flashcardcontents = (GLOBALS.mydr("back")).ToString
-                    flashCardWindow.Text = flashcardcontents
-                End While
-            Catch ex As Exception
-                MessageBox.Show("Error" & ex.Message)
-            End Try
-        ElseIf FrontBack.Text = "front" Then
-            Try
-                GLOBALS.openConnection()
-                Dim flashcardcontents As String = "front flashcard contents"
-                GLOBALS.ConnToDb()
-                GLOBALS.myqry = "SELECT front FROM flashcard WHERE setID = " & GVariables.CurrentSetID
-                GLOBALS.mycmd = New OleDbCommand(GLOBALS.myqry, GLOBALS.conn)
-                GLOBALS.mydr = GLOBALS.mycmd.ExecuteReader
-                While GLOBALS.mydr.Read()
-                    flashcardcontents = (GLOBALS.mydr("front")).ToString
-                    flashCardWindow.Text = flashcardcontents
-                End While
-            Catch ex As Exception
-                MessageBox.Show("Error" & ex.Message)
-            End Try
-        End If
+        Dim selectedFlashCards()() As String
+
+        Try
+            'Open a connection
+            GLOBALS.openConnection()
+            Dim command As New OleDbCommand
+            command.Connection = GLOBALS.conn
+            command.CommandText = "SELECT Front, Back FROM Flashcard WHERE SetID = ?"
+            command.Parameters.Add("setID", OleDbType.Integer, 8)
+            command.Parameters(0).Value = GVariables.CurrentSetID
+            command.Prepare()
+
+            Dim reader As OleDbDataReader = command.ExecuteReader()
+
+            If reader.HasRows <> True Then
+                Dim frontCard As String = InputBox("Enter a front of the card:", "Create Flashcard", "1")
+                Dim backCard As String = InputBox("Enter a back of the card: ", "Create Flashcard", "1")
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub previousBtn_Click(sender As Object, e As EventArgs) Handles previousBtn.Click
