@@ -90,6 +90,7 @@ Public Class FlashcardMenu
 
     Private Sub SetListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SetListbox.SelectedIndexChanged
         'upon selectrion of an item in the listbox
+        'ghgfhfghgfhfghfghgfhfghghfhggfhfgh
         'Load all the flashcards for that selected option into array
         'If there are no cards to load, show a popup to add a new card
         GVariables.CurrentSetName = SetListbox.GetItemText(SetListbox.SelectedItem)
