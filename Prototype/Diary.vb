@@ -1,12 +1,15 @@
 ﻿Imports System.Data.OleDb
 Public Class Diary
-    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles DiaryTxt.TextChanged
-
-    End Sub
 
     Private Sub BackBtn_Click(sender As Object, e As EventArgs) Handles BackBtn.Click
-        NotesMenu.Show()
-        Me.Close()
+        'Warning msgbox will double check if the user wants to go back out of diary without saving.
+        Dim result As DialogResult
+        result = MessageBox.Show("Are you sure you want to close your diary? " & Environment.NewLine & "Any unsaved changes will be lost.", "Close diary", MessageBoxButtons.YesNo)
+
+        If result = DialogResult.Yes Then
+            NotesMenu.Show()
+            Me.Close()
+        End If
     End Sub
     Private Sub Diary_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         GLOBALS.openConnection()

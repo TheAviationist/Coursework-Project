@@ -33,9 +33,10 @@ Partial Class MainMenu
         '
         Me.MainMenuTitle.AutoSize = True
         Me.MainMenuTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MainMenuTitle.Location = New System.Drawing.Point(13, 24)
+        Me.MainMenuTitle.Location = New System.Drawing.Point(17, 30)
+        Me.MainMenuTitle.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MainMenuTitle.Name = "MainMenuTitle"
-        Me.MainMenuTitle.Size = New System.Drawing.Size(235, 26)
+        Me.MainMenuTitle.Size = New System.Drawing.Size(302, 32)
         Me.MainMenuTitle.TabIndex = 0
         Me.MainMenuTitle.Text = "Main Menu, Welcome: "
         '
@@ -43,50 +44,54 @@ Partial Class MainMenu
         '
         Me.WelcomeUserLbl.AutoSize = True
         Me.WelcomeUserLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.WelcomeUserLbl.Location = New System.Drawing.Point(244, 24)
+        Me.WelcomeUserLbl.Location = New System.Drawing.Point(325, 30)
+        Me.WelcomeUserLbl.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.WelcomeUserLbl.Name = "WelcomeUserLbl"
-        Me.WelcomeUserLbl.Size = New System.Drawing.Size(30, 26)
+        Me.WelcomeUserLbl.Size = New System.Drawing.Size(38, 32)
         Me.WelcomeUserLbl.TabIndex = 2
         Me.WelcomeUserLbl.Text = "..."
         '
         'BtnFlashcards
         '
-        Me.BtnFlashcards.Location = New System.Drawing.Point(10, 92)
+        Me.BtnFlashcards.Location = New System.Drawing.Point(23, 170)
+        Me.BtnFlashcards.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnFlashcards.Name = "BtnFlashcards"
-        Me.BtnFlashcards.Size = New System.Drawing.Size(192, 48)
+        Me.BtnFlashcards.Size = New System.Drawing.Size(256, 59)
         Me.BtnFlashcards.TabIndex = 3
         Me.BtnFlashcards.Text = "FlashCards"
         Me.BtnFlashcards.UseVisualStyleBackColor = True
         '
         'BtnNotes
         '
-        Me.BtnNotes.Location = New System.Drawing.Point(10, 171)
+        Me.BtnNotes.Location = New System.Drawing.Point(23, 263)
+        Me.BtnNotes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnNotes.Name = "BtnNotes"
-        Me.BtnNotes.Size = New System.Drawing.Size(192, 48)
+        Me.BtnNotes.Size = New System.Drawing.Size(256, 59)
         Me.BtnNotes.TabIndex = 4
         Me.BtnNotes.Text = "Notes"
         Me.BtnNotes.UseVisualStyleBackColor = True
         '
         'BtnLogOut
         '
-        Me.BtnLogOut.Location = New System.Drawing.Point(10, 264)
+        Me.BtnLogOut.Location = New System.Drawing.Point(13, 445)
+        Me.BtnLogOut.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.BtnLogOut.Name = "BtnLogOut"
-        Me.BtnLogOut.Size = New System.Drawing.Size(192, 48)
+        Me.BtnLogOut.Size = New System.Drawing.Size(77, 45)
         Me.BtnLogOut.TabIndex = 5
         Me.BtnLogOut.Text = "Log Out"
         Me.BtnLogOut.UseVisualStyleBackColor = True
         '
         'MainMenu
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(662, 409)
+        Me.ClientSize = New System.Drawing.Size(883, 503)
         Me.Controls.Add(Me.BtnLogOut)
         Me.Controls.Add(Me.BtnNotes)
         Me.Controls.Add(Me.BtnFlashcards)
         Me.Controls.Add(Me.WelcomeUserLbl)
         Me.Controls.Add(Me.MainMenuTitle)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "MainMenu"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MainMenu"

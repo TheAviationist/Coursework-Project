@@ -25,6 +25,8 @@ Partial Class FlashcardMenu
         Me.LblFlashcards = New System.Windows.Forms.Label()
         Me.SetListbox = New System.Windows.Forms.ListBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.DeleteFlashcardBtn = New System.Windows.Forms.Button()
+        Me.cardCount = New System.Windows.Forms.Label()
         Me.FrontBack = New System.Windows.Forms.Label()
         Me.SaveBtn = New System.Windows.Forms.Button()
         Me.addCardBtn = New System.Windows.Forms.Button()
@@ -58,6 +60,8 @@ Partial Class FlashcardMenu
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.DeleteFlashcardBtn)
+        Me.Panel1.Controls.Add(Me.cardCount)
         Me.Panel1.Controls.Add(Me.FrontBack)
         Me.Panel1.Controls.Add(Me.SaveBtn)
         Me.Panel1.Controls.Add(Me.addCardBtn)
@@ -70,6 +74,25 @@ Partial Class FlashcardMenu
         Me.Panel1.Size = New System.Drawing.Size(647, 407)
         Me.Panel1.TabIndex = 3
         '
+        'DeleteFlashcardBtn
+        '
+        Me.DeleteFlashcardBtn.Enabled = False
+        Me.DeleteFlashcardBtn.Location = New System.Drawing.Point(388, 318)
+        Me.DeleteFlashcardBtn.Name = "DeleteFlashcardBtn"
+        Me.DeleteFlashcardBtn.Size = New System.Drawing.Size(98, 23)
+        Me.DeleteFlashcardBtn.TabIndex = 9
+        Me.DeleteFlashcardBtn.Text = "Delete"
+        Me.DeleteFlashcardBtn.UseVisualStyleBackColor = True
+        '
+        'cardCount
+        '
+        Me.cardCount.AutoSize = True
+        Me.cardCount.Location = New System.Drawing.Point(3, 0)
+        Me.cardCount.Name = "cardCount"
+        Me.cardCount.Size = New System.Drawing.Size(24, 13)
+        Me.cardCount.TabIndex = 8
+        Me.cardCount.Text = "0/0"
+        '
         'FrontBack
         '
         Me.FrontBack.AutoSize = True
@@ -81,7 +104,8 @@ Partial Class FlashcardMenu
         '
         'SaveBtn
         '
-        Me.SaveBtn.Location = New System.Drawing.Point(332, 326)
+        Me.SaveBtn.Enabled = False
+        Me.SaveBtn.Location = New System.Drawing.Point(284, 318)
         Me.SaveBtn.Name = "SaveBtn"
         Me.SaveBtn.Size = New System.Drawing.Size(98, 23)
         Me.SaveBtn.TabIndex = 6
@@ -90,7 +114,8 @@ Partial Class FlashcardMenu
         '
         'addCardBtn
         '
-        Me.addCardBtn.Location = New System.Drawing.Point(223, 326)
+        Me.addCardBtn.Enabled = False
+        Me.addCardBtn.Location = New System.Drawing.Point(175, 318)
         Me.addCardBtn.Name = "addCardBtn"
         Me.addCardBtn.Size = New System.Drawing.Size(103, 23)
         Me.addCardBtn.TabIndex = 5
@@ -99,6 +124,7 @@ Partial Class FlashcardMenu
         '
         'nextBtn
         '
+        Me.nextBtn.Enabled = False
         Me.nextBtn.Location = New System.Drawing.Point(567, 376)
         Me.nextBtn.Name = "nextBtn"
         Me.nextBtn.Size = New System.Drawing.Size(75, 23)
@@ -108,6 +134,7 @@ Partial Class FlashcardMenu
         '
         'previousBtn
         '
+        Me.previousBtn.Enabled = False
         Me.previousBtn.Location = New System.Drawing.Point(3, 376)
         Me.previousBtn.Name = "previousBtn"
         Me.previousBtn.Size = New System.Drawing.Size(75, 23)
@@ -117,6 +144,7 @@ Partial Class FlashcardMenu
         '
         'flipBtn
         '
+        Me.flipBtn.Enabled = False
         Me.flipBtn.Location = New System.Drawing.Point(84, 376)
         Me.flipBtn.Name = "flipBtn"
         Me.flipBtn.Size = New System.Drawing.Size(477, 23)
@@ -126,6 +154,7 @@ Partial Class FlashcardMenu
         '
         'flashCardWindow
         '
+        Me.flashCardWindow.Enabled = False
         Me.flashCardWindow.Location = New System.Drawing.Point(131, 70)
         Me.flashCardWindow.Multiline = True
         Me.flashCardWindow.Name = "flashCardWindow"
@@ -143,6 +172,7 @@ Partial Class FlashcardMenu
         '
         'DeleteSetBtn
         '
+        Me.DeleteSetBtn.Enabled = False
         Me.DeleteSetBtn.Location = New System.Drawing.Point(24, 373)
         Me.DeleteSetBtn.Name = "DeleteSetBtn"
         Me.DeleteSetBtn.Size = New System.Drawing.Size(97, 23)
@@ -192,4 +222,6 @@ Partial Class FlashcardMenu
     Friend WithEvents BackBtn As Button
     Friend WithEvents FrontBack As Label
     Friend WithEvents SaveBtn As Button
+    Friend WithEvents cardCount As Label
+    Friend WithEvents DeleteFlashcardBtn As Button
 End Class

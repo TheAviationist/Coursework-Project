@@ -31,6 +31,7 @@ Public Class SignUp
                         .Connection = GLOBALS.conn
                         .ExecuteNonQuery()
                     End With
+                    MessageBox.Show("Successful Login, Welcome " & Username.Text & "!")
                 Catch ex As Exception
                     MessageBox.Show(ex.Message(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End Try
